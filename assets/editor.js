@@ -199,6 +199,14 @@
   };
   const ALLOWED_TAGS = new Set('SECTION P DIV H1 H2 H3 H4 H5 H6 SPAN STRONG EM B I U S DEL BLOCKQUOTE BR UL OL LI A IMG TABLE THEAD TBODY TFOOT TR TH TD SUP SUB PRE CODE'.split(' '));
   const ALLOWED_CSS = new Set(('color background background-color background-image font-family font-size font-weight font-style line-height letter-spacing text-align text-decoration text-decoration-color text-decoration-thickness text-underline-offset text-indent white-space word-break overflow-wrap margin margin-top margin-right margin-bottom margin-left padding padding-top padding-right padding-bottom padding-left border border-top border-right border-bottom border-left border-color border-style border-width border-radius box-shadow width max-width min-width height max-height min-height display vertical-align list-style list-style-type list-style-position border-collapse border-spacing box-sizing').split(' '));
+  // CSSStyleDeclaration enumerates shorthand borders/radii as longhands.
+  // Preserve those fields when cleaning clipboard, downloads and local drafts.
+  for (const side of ['top', 'right', 'bottom', 'left']) {
+    for (const part of ['width', 'style', 'color']) ALLOWED_CSS.add(`border-${side}-${part}`);
+  }
+  for (const corner of ['top-left', 'top-right', 'bottom-right', 'bottom-left']) {
+    ALLOWED_CSS.add(`border-${corner}-radius`);
+  }
   const cleanRoot = (inputHTML = article.innerHTML) => {
     const holder = document.createElement('div');
     holder.innerHTML = inputHTML;
