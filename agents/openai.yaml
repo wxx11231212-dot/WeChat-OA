@@ -1,0 +1,4 @@
+interface:
+  display_name: "WeChat OA"
+  short_description: "生成可编辑高亮的公众号 GitHub 风格排版，含白底卡片和 END"
+  default_prompt: "用 $wechat-oa 排版这篇文章，保留原文、按内容标出重点，并生成可修改高亮和复制到公众号的版本。"

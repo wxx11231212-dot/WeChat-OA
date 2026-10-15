@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>WeChat OA · 公众号排版</title>
+  <style>__EDITOR_CSS__</style>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">W</span><div><h1>WeChat OA</h1><p>GitHub 风格 · 选中文字，随时调整浅蓝高亮</p></div></div>
+    <div class="header-actions"><span id="save-state" class="save-state">初始版本</span><button id="download-editor" class="button button-secondary" type="button">下载编辑版</button></div>
+  </header>
+  <div id="draft-banner" class="draft-banner" hidden><span id="draft-message">发现这篇文章的本机草稿。</span><div><button id="restore-draft" class="button button-small" type="button">恢复草稿</button><button id="discard-draft" class="button button-small button-quiet" type="button">忽略草稿</button></div></div>
+  <main class="workspace">
+    <aside class="guide-panel" aria-label="操作说明">
+      <span class="eyebrow">固定样式 · 可编辑内容</span>
+      <h2>按你的重点，<br>调整每一处强调。</h2>
+      <ol class="guide-steps"><li>在正文中拖动选中文字。</li><li>点击「添加浅蓝高亮」或「取消选区高亮」。支持跨段选择。</li><li>复制标题与正文，分别粘贴到公众号对应位置。</li></ol>
+      <div class="style-swatch"><span style="color:#0550ae;font-size:16px;font-weight:600;background:linear-gradient(transparent 58%,rgba(9,105,218,0.14) 58%);padding:0 2px;">这就是 GitHub 同款高亮</span><p>下半部浅蓝衬底，保持原主题参数。</p></div>
+      <div class="guide-note"><h3>复制前检查</h3><p>正文可以直接编辑。白色圆角卡片、段落和 END 标识会一同复制。END 两侧使用可见线条字符。</p><p>请使用普通粘贴（Ctrl / ⌘ + V），不要粘贴为纯文本。公众号的最终效果以实际预览为准。</p></div>
+      <p class="privacy-note">离线运行，无需登录。草稿只存于当前浏览器；下载编辑版可保存并分享你的修改。</p>
+    </aside>
+    <section class="editor-panel" aria-label="文章编辑区">
+      <div class="title-panel"><label for="article-title">文章标题</label><div class="title-row"><input id="article-title" type="text" autocomplete="off" placeholder="文章标题"><button id="copy-title" class="button button-secondary" type="button">复制标题</button></div></div>
+      <div class="toolbar" role="toolbar" aria-label="正文格式">
+        <div class="toolbar-group"><button id="add-highlight" class="button button-highlight" type="button" title="先选中文字，再添加 GitHub 同款浅蓝高亮">添加浅蓝高亮</button><button id="remove-highlight" class="button button-secondary" type="button" title="只取消当前选中文字的高亮，保留选区外格式">取消选区高亮</button></div>
+        <div class="toolbar-group toolbar-history"><button id="undo" class="button button-quiet" type="button" title="撤销，Ctrl / ⌘ + Z" disabled>撤销</button><button id="redo" class="button button-quiet" type="button" title="重做，Ctrl / ⌘ + Shift + Z" disabled>重做</button></div>
+        <button id="copy-body" class="button button-primary" type="button">复制正文到公众号</button>
+      </div>
+      <div class="editor-meta"><span id="article-stats">正文可以直接编辑</span><button id="reset-article" class="text-button" type="button" title="恢复生成时的内容，这一步可以撤销">恢复初稿</button></div>
+      <div class="article-canvas"><div id="article-content" contenteditable="true" role="textbox" aria-multiline="true" aria-label="可编辑的公众号正文" spellcheck="false">__ARTICLE_HTML__</div></div>
+      <div id="status" class="status" role="status" aria-live="polite">选中文字后即可调整高亮。复制与下载都会包含当前修改。</div>
+    </section>
+  </main>
+  <script id="document-data" type="application/json">__DOCUMENT_JSON__</script>
+  <script>__EDITOR_JS__</script>
+</body>
+</html>
